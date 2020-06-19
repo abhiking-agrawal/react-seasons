@@ -1,6 +1,6 @@
 import React from 'react';
 const Season = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <div className="ui card">
          
