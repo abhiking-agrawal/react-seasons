@@ -7,22 +7,26 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {lat:null, long: null };
+    //direct assignment just one time
+    this.state = {lat:null, errMsg: null };
   }
 
   render() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position)
-        this.setState({ lat :position.coords.accuracy})
+        this.setState({ lat :position.coords.latitude})
       },
-      (err) => console.log(err)
+      (err) => {
+        this.setState({ errMsg : err.message})
+      }
     )
 
     return (
       <div className="ui comments">
         <Season />
         {this.state.lat}
+        {this.state.errMsg}
       </div>
     );
   }
