@@ -12,18 +12,14 @@ const SeasonDisplay = (props) => {
     // console.log(props)
 
     const season = getSeason(props.lat,new Date().getMonth())
+    const seasonText = season === 'summer' ? "Let's hit the beach" : "Burr, It's chilly"
+    const icon = season === 'summer' ? "sun" : "snowflake"
     return (
-        <div className="ui card">
-         
-            <div className="content">
-            {season}
-            </div>
-            <div className="extra content">
-                <div className="ui two buttons">
-                    <div className="ui basic green button">Approve</div>
-                    <div className="ui basic red button">Decline</div>
-                </div>
-            </div>
+        <div>
+            <i  className={`${icon} icon`}></i>
+            <h1> {seasonText}</h1>
+            <i  className={`${icon} icon`}></i>
+
         </div>
     )
 }
