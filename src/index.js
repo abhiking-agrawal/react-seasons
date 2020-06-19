@@ -22,13 +22,21 @@ class App extends React.Component {
       }
     )
 
-    return (
-      <div className="ui comments">
-        <Season />
-        {this.state.lat}
-        {this.state.errMsg}
-      </div>
-    );
+    if(!this.state.errMsg && !this.state.lat){
+      return <div>Loading!</div>
+     }else if(this.state.errMsg && !this.state.lat){
+      return <div>Error : {this.state.errMsg}</div>
+     }else{
+      return <div>Latitude : {this.state.lat}</div>
+     }
+
+    // return (
+    //   <div className="ui comments">
+    //     <Season />
+    //     {this.state.lat}
+      
+    //   </div>
+    // );
   }
 }
 
