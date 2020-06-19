@@ -2,21 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Season from './Season'
 
-const App = () => {
-  let test = 0;
+
+const getLocation = () => {
   window.navigator.geolocation.getCurrentPosition(
     (position) => {
       console.log(position)
-      test = position.accuracy;
+      return position.coords.accuracy;
     },
     (err)=> console.log(err)
   )
-  return (
+}
+class App extends React.Component {
+render(){  
+return (
     <div className="ui comments">
      <Season />
-     {test}
+     {getLocation()}
     </div>
   );
+}
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'))
